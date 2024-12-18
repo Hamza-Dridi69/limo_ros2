@@ -44,6 +44,8 @@
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <sensor_msgs/msg/imu.hpp>
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2_geometry_msgs/tf2_geometry_msgs.h"
 
 #include "std_msgs/msg/string.hpp"
 #include "limo_msgs/msg/limo_status.hpp"
