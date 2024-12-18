@@ -29,6 +29,10 @@
  */
 
 #include "limo_base/limo_driver.h"
+#include "tf2/LinearMath/Quaternion.h"
+#include "tf2_geometry_msgs/tf2_geometry_msgs.h"
+
+
 int flag=0; 
 
 namespace AgileX {
@@ -36,12 +40,12 @@ namespace AgileX {
 LimoDriver::LimoDriver(std::string node_name):rclcpp::Node(node_name),keep_running_(false){
 
     std::string port_name="ttyTHS1";    
-    this->declare_parameter("port_name");   //声明参数
-    this->declare_parameter("odom_frame");
-    this->declare_parameter("base_frame");
-    this->declare_parameter("pub_odom_tf");
-    this->declare_parameter("use_mcnamu");
-    this->declare_parameter("control_rate");  
+    this->declare_parameter("port_name", port_name);  // Declare parameter with default value
+    this->declare_parameter("odom_frame", "odom");
+    this->declare_parameter("base_frame", "base_link");
+    this->declare_parameter("pub_odom_tf", false);
+    this->declare_parameter("use_mcnamu", false);
+    this->declare_parameter("control_rate", 10);
 
     this->get_parameter_or<std::string>("port_name", port_name, "ttyTHS1");//获取参数
     this->get_parameter_or<std::string>("odom_frame", odom_frame_, "odom");
@@ -667,5 +671,3 @@ double LimoDriver::convertCentralAngleToInner(double central_angle) {
 }
 
 }
-
-
