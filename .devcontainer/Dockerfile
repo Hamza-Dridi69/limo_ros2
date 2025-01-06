@@ -1,4 +1,4 @@
-FROM ros:foxy as dev
+FROM ros:humble as dev
 
 ENV DEBIAN_FRONTEND=noninteractive
 
